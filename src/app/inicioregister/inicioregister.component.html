@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./inicioregister.component.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300;600&display=swap" rel="stylesheet">
+
+    <style>
+      .centered-text {
+        text-align: center;
+        margin-top: 50px; /* Ajusta el valor según sea necesario */
+      }
+    </style>
+  </head>
+  <body class="bg-dark">
+    <section>
+      <div class="row g-0">
+        <div class="col-lg-7 d-none d-lg-block">
+          <div>
+            <div class="">
+              <div class="img-1 min-vh-100 active"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 bg-dark d-flex flex-column align-items-end min-vh-100">
+          <div class="w-100 mt-5">
+            <p class="align-self-center navbar-brand centered-text aftale"></p>
+          </div>
+          <div class="align-self-center w-100 px-lg-5 py-lg-4 p-4">
+            <h1 class="highlight-title mb-4">¡Bienvenido!</h1>
+            <form *ngIf="esCliente" class="mb-5">
+              <div class="row">
+                <!-- Campos de nombre y apellidos (para clientes) -->
+                <div class="col-md-6 mb-4" *ngIf="esCliente">
+                  <label for="nombre" class="form-label font-weight-bold">Nombre</label>
+                  <input type="text" id="nombre" required [(ngModel)]="nombre" name="nombre" class="form-control bg-dark-x border-0" placeholder="Ingresa tu nombre">
+                </div>
+                <div class="col-md-6 mb-4" *ngIf="esCliente">
+                  <label for="apellidos" class="form-label font-weight-bold">Apellidos</label>
+                  <input type="text" id="apeliidos" required [(ngModel)]="apellidos" name="apellidos" class="form-control bg-dark-x border-0" placeholder="Ingresa tus apellidos">
+                </div>
+                <!-- Campos de nombre de la empresa y teléfono (para empresas) -->
+              </div>
+              <div class="row">
+                <!-- Campo de email -->
+                <div class="col-md-6 mb-4">
+                  <label for="email" class="form-label font-weight-bold">Email</label>
+                  <input type="email" id="email" required [(ngModel)]="email" name="email" class="form-control bg-dark-x border-0"  placeholder="Ingresa tu email" aria-describedby="emailHelp">
+                </div>
+                <!-- Campo de teléfono (para clientes) -->
+                <div class="col-md-6 mb-4" *ngIf="esCliente">
+                  <label for="telefono" class="form-label font-weight-bold">Número de Teléfono</label>
+                  <input type="tel" id="telefono" [(ngModel)]="telefono" name="telefono" class="form-control bg-dark-x border-0"  placeholder="Ingresa tu número de teléfono">
+                </div>
+                <!-- Campo de correo de recuperación (para empresas) -->
+                <div class="col-md-6 mb-4" *ngIf="!esCliente">
+                  <label for="emailRecuperacion" class="form-label font-weight-bold">Correo de Recuperación</label>
+                  <input type="email" id="emailRec" [(ngModel)]="emailRec" name="emailRec" class="form-control bg-dark-x border-0"  placeholder="Ingresa tu correo de recuperación">
+                </div>
+              </div>
+              <div class="row">
+                <!-- Campos de contraseña -->
+                <div class="col-md-6 mb-4">
+                  <label for="password" class="form-label font-weight-bold">Contraseña</label>
+                  <input type="password" id="password" required [(ngModel)]="password" name="password" class="form-control bg-dark-x border-0 mb-2"  placeholder="Ingresa tu contraseña">
+                </div>
+                <div class="col-md-6 mb-4">
+                  <label for="confirmPassword" class="form-label font-weight-bold">Repetir Contraseña</label>
+                  <input type="password" id="password" required [(ngModel)]="password2" name="password" class="form-control bg-dark-x border-0 mb-2"  placeholder="Repite tu contraseña">
+                </div>
+              </div>
+              <div class="row">
+                <!-- Campo de fecha de nacimiento (para clientes) -->
+                <div class="col-md-6 mb-4" *ngIf="esCliente">
+                  <label for="fechaNacimiento" class="form-label font-weight-bold">Fecha de Nacimiento</label>
+                  <input type="date" id="nacimiento" [(ngModel)]="nacimiento" name="nacimiento" class="form-control bg-dark-x border-0" >
+                </div>
+                <!-- Campo de correo de recuperación (para clientes) -->
+                <div class="col-md-6 mb-4" *ngIf="esCliente">
+                  <label for="emailRecuperacion" class="form-label font-weight-bold">Correo de Recuperación</label>
+                  <input type="email" id="emailRec" [(ngModel)]="emailRec" name="emailRec" class="form-control bg-dark-x border-0"  placeholder="Ingresa tu correo de recuperación">
+                </div>
+              </div>
+              <!-- Campo de foto de perfil de empresa (solo para empresas) -->
+
+              <button type="submit" (click)="register()" class="btn btn-primary w-100">Registrarse como <span *ngIf="!esCliente; else inicioText">Empresa</span></button >
+              <div class="text-center m-2" style="cursor: pointer; text-decoration: underline;" (click)="cambiarRegister()">Cambia a <span *ngIf="esCliente; else inicioText">Empresa</span></div>
+              <ng-template #inicioText>Cliente</ng-template>            
+            </form>
+            <form *ngIf="!esCliente" class="mb-5">
+              <div class="row">
+                <!-- Campos de nombre y apellidos (para clientes) -->
+                <!-- Campos de nombre de la empresa y teléfono (para empresas) -->
+                <div class="col-md-6 mb-4" *ngIf="!esCliente">
+                  <label for="empresa" class="form-label font-weight-bold">Nombre de la empresa</label>
+                  <input type="text" id="empresa" required [(ngModel)]="empresaInput" name="empresaInput" class="form-control bg-dark-x border-0" placeholder="Ingresa el nombre de la empresa">
+                </div>
+                <div class="col-md-6 mb-4" *ngIf="!esCliente">
+                  <label for="cif" class="form-label font-weight-bold">Cif</label>
+                  <input type="text" id="cif" [(ngModel)]="cif" name="cif" class="form-control bg-dark-x border-0"  placeholder="Ingresa el cif de empresa">
+                </div>
+                <div class="col-md-6 mb-4" *ngIf="!esCliente">
+                  <label for="telefono" class="form-label font-weight-bold">Número de Teléfono</label>
+                  <input type="tel" id="telefono" [(ngModel)]="telefono" name="telefono" class="form-control bg-dark-x border-0"  placeholder="Ingresa el teléfono de empresa">
+                </div>
+                <div class="col-md-6 mb-4">
+                  <label for="email" class="form-label font-weight-bold">Email</label>
+                  <input type="email" id="email" required [(ngModel)]="email" name="email" class="form-control bg-dark-x border-0"  placeholder="Ingresa tu email" aria-describedby="emailHelp">
+                </div>
+              </div>
+              <div class="row">
+                <!-- Campos de contraseña -->
+                <div class="col-md-6 mb-4">
+                  <label for="password" class="form-label font-weight-bold">Contraseña</label>
+                  <input type="password" id="password" required [(ngModel)]="password" name="password" class="form-control bg-dark-x border-0 mb-2"  placeholder="Ingresa tu contraseña">
+                </div>
+                <div class="col-md-6 mb-4">
+                  <label for="confirmPassword" class="form-label font-weight-bold">Repetir Contraseña</label>
+                  <input type="password" id="password" required [(ngModel)]="password2" name="password" class="form-control bg-dark-x border-0 mb-2"  placeholder="Repite tu contraseña">
+                </div>
+              </div>
+
+              <!-- Campo de foto de perfil de empresa (solo para empresas) -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <label for="emailRecuperacion" class="form-label font-weight-bold">Correo de Recuperación</label>
+                  <input type="email" id="emailRec" [(ngModel)]="emailRec" name="emailRec" class="form-control bg-dark-x border-0"  placeholder="Ingresa tu correo de recuperación">
+                </div>
+              </div>
+              <button type="submit" (click)="register()" class="btn btn-primary w-100">Registrarse como <span *ngIf="!esCliente; else inicioText">Empresa</span></button >
+              <div class="text-center m-2" style="cursor: pointer; text-decoration: underline;" (click)="cambiarRegister()">Cambia a <span *ngIf="esCliente; else inicioText">Empresa</span></div>
+              <ng-template #inicioText>Cliente</ng-template>            
+            </form>
+          </div>
+          <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
+            <p class="d-inline-block mb-0">¿Ya tienes una cuenta?</p><br>
+            <a href="" routerLink="/" class="highlight-link">Inicia sesión aquí</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

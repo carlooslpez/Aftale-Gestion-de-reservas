@@ -1,0 +1,101 @@
+
+body {
+    font-family: 'Spartan', sans-serif;
+    font-weight: 300;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.text-light { color: #16191C; }
+.bg-dark { background-color:  #16191C; }
+.bg-dark-x { background-color: #1E2126; }
+
+.btn {
+    min-height: 3.125rem;
+    font-weight: 600;
+}
+
+
+.form-control {
+    min-height: 3.125rem;
+    line-height: initial;
+}
+.form-control:focus {
+    background-color: #1E2126;;
+    outline: none;
+}
+
+.img-1 {
+  background-image: url('../../inicio.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Establece el 100% de la altura de la ventana del navegador */
+  width: 60vw; /* Establece el 100% de la anchura de la ventana del navegador */
+  overflow: hidden; /* Evita la aparición de barras de desplazamiento */
+}
+
+
+.logo{
+  max-width: 50%;
+
+}
+  
+::placeholder {
+    color: #616161;
+}
+  
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="tel"],
+input[type="password"] {
+  color: #ffffff; /* Cambia "blue" al color deseado */
+}
+
+.aftale{
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.highlight-link {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+
+  .highlight-title {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-decoration: none;
+    
+  }
+
+  .highlight-link:hover {
+    color: #0d6efd;
+  }
+
+  .btn-slide {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-slide:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #007bff;
+    transition: left 0.5s ease-in-out;
+  }
+
+  .btn-slide:hover:before {
+    left: 0;
+  }
+
+  @media(max-width:1000px){body{ overflow: scroll;}}

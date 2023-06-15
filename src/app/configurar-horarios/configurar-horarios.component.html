@@ -1,0 +1,67 @@
+<div class="mb-5">
+  <h2 class="text-center mb-5">Configurar horario</h2>
+    <table class="table">
+      <tr>
+        <th>Acción</th>
+        <th>Dias de la semana</th>
+        <th>Apertura</th>
+        <th>Inicio descanso</th>
+        <th>Fin descanso</th>
+        <th>Cierre</th>
+      </tr>
+      <tr *ngFor="let horario of horarios">
+        <td (click)="eliminar(horario.dia_semana_horario)" class="btn btn-danger">Eliminar</td>
+        <td>{{ this.nombreHora(horario.dia_semana_horario) }}</td>
+        <td>
+          <input [(ngModel)]="horario.hora_apertura" class="form-control" type="time">
+        </td>
+        <td>
+            <input [(ngModel)]="horario.inicio_descanso" class="form-control" type="time">
+          </td>
+          <td>
+            <input [(ngModel)]="horario.hora_cierre" class="form-control" type="time">
+          </td>
+          <td>
+            <input [(ngModel)]="horario.fin_descanso" class="form-control" type="time">
+          </td>
+      </tr>
+    </table>
+  
+    <button *ngIf="this.horarios.length < 3" (click)="listaHoras = !listaHoras" class="btn btn-primary mt-4 mr-4">Añadir horario</button>
+  
+    <div *ngIf="listaHoras">
+
+      <table class="table mt-5">
+        <tr>
+          <th>Dias de la semana</th>
+          <th>Apertura</th>
+          <th>Inicio descanso</th>
+          <th>Fin descanso</th>
+          <th>Cierre</th>
+        </tr>
+        <tr>
+          <td><select [(ngModel)]="nuevoHorario.dia_semana_horario">
+            <option *ngFor="let dia of diasSinHorario()" [value]="dia">{{ nombreHora(dia) }}</option>
+
+          </select> </td>
+          <td>
+            <input [(ngModel)]="nuevoHorario.hora_apertura" class="form-control" type="time">
+          </td>
+          <td>
+              <input [(ngModel)]="nuevoHorario.inicio_descanso" class="form-control" type="time">
+            </td>
+            <td>
+              <input [(ngModel)]="nuevoHorario.hora_cierre" class="form-control" type="time">
+            </td>
+            <td>
+              <input [(ngModel)]="nuevoHorario.fin_descanso" class="form-control" type="time">
+            </td>
+        </tr>
+      </table>
+      <button class="btn btn-primary mt-4" (click)="crear(this.nuevoHorario)">Añadir</button>
+
+    </div>
+  
+    <button (click)="guardar()" class="btn btn-primary mt-4">Guardar</button>
+  </div>
+  

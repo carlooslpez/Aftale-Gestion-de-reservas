@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.padding-container {
+    padding: 6%;
+  }
+
+  /* Estilos para el modo claro */
+html,body {
+    background-color: #ffffff ;
+    color: #212529;
+  }
+
+  .fondoinput{
+    background-color: #007bff;
+  }  
+  /* Estilos para el modo oscuro */
+  html,body.modo-oscuro {
+    background-color: #212529 ;
+    color: #ffffff;
+  }
+  
+  .specific-component.no-padding {
+    padding: 0 !important;
+  }
+
+  @media(max-width: 1000px){.padding-container{padding-top:8%}}
+  @media(max-width: 700px){.padding-container{padding-top:20%}}
+
+  
+  
+  
+

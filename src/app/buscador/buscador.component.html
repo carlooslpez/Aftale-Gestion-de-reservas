@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Buscar Empresas</title>
+</head>
+<div>
+  <div class="container">
+    <h2 class="text-center mb-5">Buscar Empresas</h2>
+
+    <form>
+      <div class="form-group">
+        <label for="criterioBusqueda">Criterio de búsqueda:</label>
+        <select class="form-control" [(ngModel)]="criterioBusqueda" name="criterioBusqueda" id="criterioBusqueda">
+          <option value="categoria">Buscar por categoría</option>
+          <option value="servicio">Buscar por servicio</option>
+        </select>
+      </div>
+    
+      
+      <div id="categoria" *ngIf="criterioBusqueda === 'categoria' || criterioBusqueda === 'servicio'" class="mt-3">
+        <label for="categoriaElegida">Categoría elegida:</label>
+        <select class="form-control" [(ngModel)]="categoriaElegida" (change)="onSelectChange();" name="categoriaElegida" id="categoriaElegida">
+          <option *ngFor="let categoria of categorias; index as i;" [value]="i + 1">{{categoria.nombre_categoria}}</option>
+        </select>
+      </div>
+      
+      <div id="servicio" *ngIf="criterioBusqueda === 'servicio'" class="mt-3">
+        <label for="servicio">Servicio:</label>
+        <select class="form-control" [(ngModel)]="servicio" name="servicio" id="servicio">
+          <option value=""></option>
+          <option *ngFor="let servicio of serviciosFiltrados;" [value]="servicio.id">{{servicio.nombre_servicio}}</option>
+        </select>
+      </div>
+      
+      <button class="btn btn-primary mt-3" [routerLink]="['/busqueda', criterioBusqueda, getKey()]">Buscar</button>
+    </form>
+
+    <div class="mt-4">
+      <h3>Empresas destacadas:</h3>
+
+      <div class="row">
+        <div class="col-md-4" *ngFor="let empresa of empresas">
+          <div style="height: 425px;" class="card p-2 mb-5">
+            <img class="card-img-top" src="https://msbarrons.com/wp-content/uploads/2017/06/maxresdefault.jpg" alt="Imagen Empresa 1">
+            <div class="card-body">
+              <h5 class="card-title">{{ empresa.nombre }}</h5>
+              <p class="card-text">Descripción: {{ empresa.descripcion }}.</p>
+              <p class="card-text">Categoría: {{ empresa.categoria }}</p>
+              <a href="" routerLink="/detalles/{{ empresa.nombre }}" class="btn btn-primary">Ver Detalles</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 

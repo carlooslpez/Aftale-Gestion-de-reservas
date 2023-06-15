@@ -1,0 +1,27 @@
+  <!-- <ng-template [ngIf]="!this.userService.isLoged">
+    <app-login></app-login>
+      
+    </ng-template>
+    <ng-template [ngIf]="this.userService.isLoged">  
+<ng-template [ngIf]="!this.userService.isLoged">
+  <router-outlet></router-outlet>
+</ng-template>
+
+<ng-template [ngIf]="this.userService.isLoged">  
+  <app-aftale-top-menu></app-aftale-top-menu>  
+  <app-topbar></app-topbar>
+  <router-outlet></router-outlet>
+    </ng-template> -->
+    <!-- <app-aftale-top-menu></app-aftale-top-menu>  
+    <router-outlet></router-outlet> -->
+    <header class="specific-component no-padding">
+      <app-aftale-top-menu></app-aftale-top-menu> 
+    </header><app-alert></app-alert>
+    <body [class]="obtenerEstiloModoVisual()" [ngClass]="{'padding-container': modoVisual}">
+      <!-- Contenido principal de la aplicación -->
+      
+      <router-outlet></router-outlet>
+      
+    </body>
+    
+

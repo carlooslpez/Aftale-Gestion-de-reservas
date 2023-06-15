@@ -1,0 +1,17 @@
+<div class="mt-4">
+    <h3>Resultados de la búsqueda:</h3>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let servicio of servicios">
+      <div class="card">
+        <img class="card-img-top" src="https://msbarrons.com/wp-content/uploads/2017/06/maxresdefault.jpg" alt="Imagen del servicio">
+        <div class="card-body">
+          <h5 class="card-title">{{ servicio.nombre_empresa }}</h5>
+          <p style="font-size: 20px;">{{servicio.nombre_servicio}}</p>
+          <p class="card-text">{{ servicio.precio }}€</p>
+          <a [routerLink]="['/reservar', servicio.id_empresa, key]" class="btn btn-primary">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  

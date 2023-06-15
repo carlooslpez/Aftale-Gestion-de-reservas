@@ -1,0 +1,33 @@
+<div> <h2 class="text-center mb-5">Configurar servicios</h2>
+  <table class="table">
+    <tr>
+      <th>Acción</th>
+      <th>Servicio</th>
+      <th>Precio</th>
+    </tr>
+    <tr *ngFor="let servicio of serviciosempresa">
+      <td (click)="eliminar(servicio.id)" class="btn btn-danger">Eliminar</td>
+      <td>{{ servicio.nombre_servicio }}</td>
+      <td>
+        <input [(ngModel)]="servicio.precio" class="form-control" type="number">
+      </td>
+    </tr>
+  </table>
+
+  <button (click)="listaServicios = !listaServicios" class="btn btn-primary mt-4 mr-4">Añadir servicio</button>
+
+  <div *ngIf="listaServicios" class="listaServicios mt-4">
+    <select class="form-control" [(ngModel)]="categoriaElegida" (change)="onSelectChange()">
+      <option value="">Elija una categoría</option>
+      <option *ngFor="let categoria of categorias; let i = index;" [value]="i + 1">{{ categoria.nombre_categoria }}</option>
+    </select>
+
+    <select class="form-control mt-2" [(ngModel)]="servicio">
+      <option value="">Elija un servicio</option>
+      <option *ngFor="let servicio of serviciosFiltrados;" [value]="servicio.id">{{ servicio.nombre_servicio }}</option>
+    </select>
+    <input type="number" [(ngModel)]="precio" class="form-control mt-2" placeholder="Precio">
+    <button *ngIf="precio" (click)="crear(servicio, precio)" class="btn btn-success mt-2">Añadir</button>
+  </div>
+  <button (click)="guardar()" class="btn btn-primary mt-4">Guardar</button>
+</div>

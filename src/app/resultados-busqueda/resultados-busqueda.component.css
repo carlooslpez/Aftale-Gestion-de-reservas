@@ -1,0 +1,50 @@
+.services{
+    float: right;
+}
+.service {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.service h3 {
+    text-align: center;
+    padding: 10px;
+}
+
+.service h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.service-body {
+    display: flex;
+    align-items: center;
+}
+
+.service img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    float: left;
+    margin-right: 20px;
+}
+
+.service p {
+    margin: 10px;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: justify;
+    
+}
+
+.service:nth-child(even) {
+    background-color: #fabcbc;
+}
+
+.service:nth-child(odd) {
+    background-color: #cfe8f5;
+}
